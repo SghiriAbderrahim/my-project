@@ -1,0 +1,347 @@
+/* style of App */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+   
+}
+.App {
+ width: 100vw;
+ height: 100vh;
+ background-color: var(--mode-background-color);
+ overflow: hidden;
+ position:relative;
+}
+:root{
+  --color: 180;
+  --mode-color: rgb(255, 255, 255);
+  --mode-background-color: rgb(0, 0, 0);
+}
+
+::-webkit-scrollbar {
+  display:none;
+}
+.icon{
+  fill: var(--mode-color);
+  }
+  .hover{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding:5px;
+  }
+.hover:hover{
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+/* style of NavBare*/
+.NavBare{
+  width: 100%;
+  height: 6vh;
+  background-color: hsla(var(--color), 100%, 25%, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5vw;
+}
+
+.search{
+  display: flex;
+  
+}
+.search input{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  color: var(--mode-color);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.search input:focus{
+  display: block;
+}
+.search input::placeholder{
+color: hsla(var(--color), 100%, 25%, 0.9);
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  filter: opacity(1);
+}
+.search input::-webkit-search-cancel-button{
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: hsla(var(--color), 100%, 25%, 1);
+  position: relative;
+  z-index: 1;
+}
+/* style of menu*/
+.menu{
+  background-color: var(--mode-background-color);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display:none;
+  z-index: 8;
+  top:0;
+  right: 0;
+}
+/* style of Workshop*/
+.workshop{
+  width: 100vw;
+  height: 12vh;
+  background: hsla(var(--color), 100%, 25%, 0.7);
+  display: flex;
+  gap:5vw;
+  justify-content: center;
+  align-items: center;
+  
+}
+.workshop .cell, .palette{
+border: 2px solid var(--mode-color);
+width: 15vw;
+height: 15vw;
+max-height: 10vh;
+max-width: 10vh;
+border-radius: 1vw;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.workshop img{
+  width:110%;
+  height: 110%;
+}
+.workshop img[src*='undefined']{
+  display: none;
+}
+.arrow{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.palette{
+  background: hsla(var(--color), 100%, 25%, 1);
+  border: 2px solid hsla(var(--color), 100%, 25%, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--mode-background-color);
+}
+.palette svg{
+  width: 80%;
+  height: 80%;
+}
+/* Style of Tags*/
+.tags{
+  width: 100vw;
+  height: 15vw;
+  max-height: 10vh;
+  background: hsla(var(--color), 100%, 25%, 0.1);
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.tags a{
+  text-decoration: none;
+}
+.tag{
+  padding: 5px 10px;
+  height: 5vw;
+  max-height: 5vh;
+  border-radius: 20px;
+  background: hsla(var(--color), 100%, 25%, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mode-color);
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 10px;
+}
+.active .tag{
+background: hsla(var(--color), 100%, 25%, 0.9);
+color: var(--mode-background-color);
+}
+
+/* style of elements div*/
+
+.elements{
+  width:100%;
+  height: 74vh;
+  overflow: auto;
+  display:flex;
+  flex-wrap:wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-bottom:10vh;
+}
+.element{
+  width: 24vw;
+  height:auto;
+  display: flex;
+  padding:15px;
+  align-items: center;
+  flex-direction: column;
+  gap:.5em;
+}
+/* elements background color*/
+.el:nth-child(6n-5) .image{
+  background: hsla(12, 100%, 50%, 0.6);
+}
+.el:nth-child(6n-4) .image{
+  background: hsla(51, 100%, 50%, 0.6);
+}
+.el:nth-child(6n-3) .image{
+  background: hsla(96, 100%, 50%, 0.6);
+}
+.el:nth-child(6n-2) .image{
+  background: hsla(155, 100%, 50%, 0.6);
+}
+.el:nth-child(6n-1) .image{
+  background: hsla(214, 100%, 50%, 0.6);
+}
+.el:nth-child(6n) .image{
+  background: hsla(340, 100%, 50%, 0.6);
+}
+/* elements background color*/
+.element .image, .hint .image{
+  width: 15vw;
+  height: 15vw;
+  border: 2px solid var(--mode-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+}
+.image img{
+  width: 140%;
+  height: 140%;
+  object-fit: cover;
+}
+p{
+  font-size: 1em;
+  font-weight: 500;
+  text-align: center;
+  width:100%;
+  word-break: break-word;
+  color:var(--mode-color);
+  letter-spacing: .1em;
+}
+/* style of hints */
+.hints-div{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width: 100%;
+  background-color: var(--mode-background-color);
+  overflow: hide;
+  height:6vh;
+  transition: height .5s;
+}
+.top-bar{
+  width: 100%;
+  height: 6vh;
+  background-color: hsla(var(--color), 100%, 25%, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5vw;
+  font-weight:bold;
+  color: var(--mode-color);
+}
+.hints-icon{
+  fill: rgb(255, 196, 0);
+}
+.hints-icon svg:nth-child(2){
+  display: none;
+  fill: var(--mode-color);
+}
+.hints{
+  width: 100%;
+  height: 94vh;
+  background-color: hsla(var(--color), 100%, 25%, .1);
+  overflow: auto;
+  display:flex;
+  flex-wrap:wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-bottom:15vh;
+}
+.hint{
+  width: 24vw;
+  height:auto;
+  display: flex;
+  padding:15px;
+  align-items: center;
+  flex-direction: column;
+  gap:.5em;
+  position:relative;
+}
+.ingredients{
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  padding:5px;
+  position:absolute;
+  top:0;
+  left:0;
+  gap:5%;
+}
+.hint:hover .ingredients{
+  display: flex;
+}
+.hint:hover:nth-child(4n) .ingredients{
+  align-items: flex-end;
+}
+.ingredient{
+  background:hsla(var(--color), 100%, 25%, 1);
+  display:flex;
+  gap:5px;
+  align-items: center;
+  justify-content: center;
+  padding:5px;
+  width: 150%;
+  border-radius:1vw;
+  z-index:5;
+}
+.ingredient > .image{
+  width: 18vw;
+  height: 11vw;
+  border-radius:.5vw;
+  border:1px solid var(--mode-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 700px) {
+  /* For mobile desktop: */
+  ::-webkit-scrollbar {
+    display: block;
+    width: 1em;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsla(var(--color), 100%, 25%, 0.1); 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsla(var(--color), 100%, 25%, 0.8);
+    border-radius: 1em; 
+  }
+  
+  .element , .hint {
+    width: 12.3vw;
+    height: 12.3vw;
+    
+  }
+  .element .image, .hint .image{
+    width: 6vw;
+    height: 6vw;
+    
+  }
+  }
