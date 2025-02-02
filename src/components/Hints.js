@@ -14,9 +14,12 @@ let check = el.ingredients.every((e) => {
   return  obj.includes(e);
 })
 if(check && !obj.includes(el.id)){
-    hints.push(el); 
+    if(!hints.includes(el)){
+    hints.push(el);
+    } 
 }
-  })
+  });
+  
     let toggle=true;
     const hintsToggle=()=>{
         const Icon1= document.querySelector('.hints-icon .hintIcon');

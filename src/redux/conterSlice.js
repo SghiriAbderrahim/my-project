@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import elementsArr from '../redux/ElementsJson';
+let mixId;
+let mixImage;
 let settings = { darkMode: true, color: 180, language: "en" };
 let existedElements = ["water", "soil", "air", "fire"];
 let mixingElements = [];
@@ -23,6 +26,8 @@ export const counterSlice = createSlice(
       mixingElements: mixingElements,
       existedElements: existedElements,
       settings: settings,
+      mixId: mixId,
+      mixImage: mixImage,
     },
     reducers: {
       changeSettings: (state, action) => {
@@ -61,15 +66,40 @@ export const counterSlice = createSlice(
         
       },
       putExistedElements: (state,action)=>{
-        if(!state.existedElements.includes(action.payload) && action.payload !== undefined){
-         state.existedElements.push(action.payload);
+        if(!state.existedElements.includes(state.mixId) && state.mixId !== undefined){
+         state.existedElements.push(state.mixId);
          state.mixingElements=[];
         }
       },
+      dedectMixing: (state, action) => {
+        let mix = [];
+        state.mixingElements.forEach(element => {
+            mix.push(element)
+        });
+        let mixString = mix.sort().join('');
+        let check=false;
+        elementsArr.forEach((item) => {
+            let ing = item.ingredients.sort().join('');
+            if (mixString === ing && mixString !== '' ){
+                state.mixId = item.id
+                check=true;
+             }
+            
+            }) 
+        if(!check){
+             state.mixId=undefined;
+        }    
+           
+         if(state.existedElements.includes(state.mixId)){
+              state.mixImage=state.mixId;
+          }else{
+            state.mixImage=undefined;
+          }     
+    },
     },
   }
 );
 
-export const { changeSettings, editMixingElements,putExistedElements } = counterSlice.actions;
+export const { changeSettings, editMixingElements,putExistedElements,dedectMixing } = counterSlice.actions;
 
 export default counterSlice.reducer;

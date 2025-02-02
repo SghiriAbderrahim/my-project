@@ -1,44 +1,24 @@
 import React from 'react';
 import Icons from './Icons';
-import { editMixingElements,putExistedElements} from '../redux/conterSlice';
+import { editMixingElements,putExistedElements,dedectMixing} from '../redux/conterSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import elementsArr from '../redux/ElementsJson';
+
 function Workshop() {
-    const { mixingElements,existedElements } = useSelector((state) => state.alchemy);
+    const { mixingElements, mixImage } = useSelector((state) => state.alchemy);
     let obj = mixingElements;
     const dispatch = useDispatch();
    
     const deletElement = (id) => {
         let el = { type: 'pop', id: id }
         dispatch(editMixingElements(el));
-        
+        dispatch(dedectMixing())
     }
-    var mixId;
-    var mixImage;
-    const dedectMixing = () => {
-        let mix = [];
-        obj.forEach(element => {
-            mix.push(element)
-        });
-        let mixString = mix.sort().join('');
-        elementsArr.forEach((item) => {
-            let ing = item.ingredients.sort().join('');
-            if (mixString === ing && mixString !== '' ) {
-                mixId = item.id
-            }
-            if(existedElements.includes(item.id)){
-                mixImage=mixId;
-            }else{
-                mixImage=undefined;
-            }
-        })
-        
-        
-    }
-    dedectMixing();
+    
+    
+    
     const mixing = ()=>{
        
-        dispatch(putExistedElements(mixId));
+        dispatch(putExistedElements());
     }
     return (
         <div className="workshop">

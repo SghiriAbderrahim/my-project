@@ -1,5 +1,5 @@
 import React from 'react';
-import {editMixingElements} from '../redux/conterSlice';
+import {editMixingElements, dedectMixing} from '../redux/conterSlice';
 import { useDispatch} from 'react-redux';
 function Element(prompt){
     const dispatch = useDispatch();
@@ -7,9 +7,10 @@ function Element(prompt){
     const putElement=(ele)=>{
       let  el = {type:'push',id:ele}
         dispatch(editMixingElements(el));
+        dispatch(dedectMixing())
     }
     return (
-        <div className='element el'>
+        <div className='element el' key={element}>
             <div className='image' onClick={()=>{putElement(element)}}>
             <img src={`./images/${element}.png`} alt={element} /> 
             </div>

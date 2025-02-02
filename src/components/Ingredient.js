@@ -4,7 +4,7 @@ function Ingredient(prompt) {
     return (
         <div className="ingredient">
             <div className='image'>
-                <img src={`./images/${el}.png`} alt={el} />
+            <img src={`./images/${el}.png`} alt={el} />
             </div>
             <p className="title">{el}</p>
         </div>
